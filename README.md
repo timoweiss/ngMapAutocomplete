@@ -1,4 +1,6 @@
-# ng-Autocomplete
+# ng-Map-Autocomplete
+
+An actively maintained fork of Will Palahnuk's ng-Autocomplete that add functionalites and merges unanswered pull requests.
 
 A simple directive for adding google places autocomplete to a textbox element. 
 
@@ -8,10 +10,14 @@ Tested with angularjs-1.2.4
 
 Uses optional directive parameters, so it won't work with <1.2. If people are interested I'll release a <1.2 version.
 
-## Examples
+## Example
 
-To see the examples, cd into the examples directory and run: http-server -a localhost
+To see it in action, cd into the examples directory and run:
+``` shell
+http-server -a localhost
+```
 
+Will's original examples:
 + [Example Plunkers - Simple Usage](http://plnkr.co/edit/GE34ojss9xMGm0024FvM?p=preview)
 
 + [Example Plunkers - Advanced Usage](http://plnkr.co/edit/GF3nM3XfYX9El2w11pGo?p=preview)
