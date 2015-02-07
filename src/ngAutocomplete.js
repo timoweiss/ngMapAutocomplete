@@ -105,15 +105,14 @@ angular.module("ngMapAutocomplete", [])
                 if (scope.gPlace === undefined) {
                     scope.gPlace = new google.maps.places.Autocomplete(element[0], {});
                 }
+
                 google.maps.event.addListener(scope.gPlace, 'place_changed', function () {
                     var result = scope.gPlace.getPlace();
                     if (result !== undefined) {
                         if (result.address_components !== undefined) {
-
                             scope.$apply(function () {
-
                                 scope.details = result;
-                                scope.details.description = element.val();
+                                scope.$emit('mapentrySelected', scope.details);
                                 ngModel.$setViewValue(element.val());
                             });
                         }
@@ -125,6 +124,33 @@ angular.module("ngMapAutocomplete", [])
                     }
                 });
 
+/*                var applySelection = function() {
+                    var result = scope.gPlace.getPlace();
+                    console.log(scope.gPlace.getPlace());
+                    if (true) {
+                        if (true) {
+
+                            scope.$apply(function () {
+                                // scope.details = result;
+                                // scope.details.description = element.val();
+                                ngModel.$setViewValue(element.val());
+                            });
+                        }
+                        else {
+                            if (watchEnter) {
+                                getPlace(result);
+                            }
+                        }
+                    }
+                };
+                */
+                // Watch enter and update autocomplete before sending
+                element.bind("keydown keypress", function(event) {
+                  if(event.which === 13) {
+                    google.maps.event.trigger(scope.gPlace, 'place_changed');
+                    return false;
+                  }
+                });
 
                 //function to get retrieve the autocompletes first result using the AutocompleteService
                 var getPlace = function (result) {
@@ -156,13 +182,6 @@ angular.module("ngMapAutocomplete", [])
                                                     element.val(detailsResult.formatted_address);
 
                                                     scope.details = detailsResult;
-
-//                                                    //on focusout the value reverts, need to set it again.
-//                                                    var watchFocusOut = element.on('focusout', function(event) {
-//                                                        element.val(detailsResult.formatted_address);
-//                                                        event.preventDefault();
-//                                                        element.unbind('focusout');
-//                                                    });
 
                                                 });
                                             }
