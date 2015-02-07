@@ -10,6 +10,8 @@ Uses optional directive parameters, so it won't work with <1.2. If people are in
 
 ## Examples
 
+To see the examples, cd into the examples directory and run: http-server -a localhost
+
 + [Example Plunkers - Simple Usage](http://plnkr.co/edit/GE34ojss9xMGm0024FvM?p=preview)
 
 + [Example Plunkers - Advanced Usage](http://plnkr.co/edit/GF3nM3XfYX9El2w11pGo?p=preview)
