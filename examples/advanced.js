@@ -1,8 +1,7 @@
 angular.module( "Test", ['ngMapAutocomplete'])
-  .controller("TestCtrl",function ($scope) {
-
-    $scope.result = ''
-//    $scope.details = ''
+  .controller("TestCtrl", function ($scope) {
+    
+    $scope.result = '';
     $scope.options = {};
 
     $scope.form = {
@@ -13,14 +12,14 @@ angular.module( "Test", ['ngMapAutocomplete'])
       boundsEnabled: false,
       componentEnabled: false,
       watchEnter: true
-    }
+    };
 
     //watch form for changes
     $scope.watchForm = function () {
-      return $scope.form
+      return $scope.form;
     };
     $scope.$watch($scope.watchForm, function () {
-      $scope.checkForm()
+      $scope.checkForm();
     }, true);
 
 
@@ -29,23 +28,37 @@ angular.module( "Test", ['ngMapAutocomplete'])
 
       $scope.options = {};
 
-      $scope.options.watchEnter = $scope.form.watchEnter
+      $scope.options.watchEnter = $scope.form.watchEnter;
 
       if ($scope.form.typesEnabled) {
-        $scope.options.types = $scope.form.type
+        $scope.options.types = $scope.form.type;
       }
       if ($scope.form.boundsEnabled) {
 
-        var SW = new google.maps.LatLng($scope.form.bounds.SWLat, $scope.form.bounds.SWLng)
-        var NE = new google.maps.LatLng($scope.form.bounds.NELat, $scope.form.bounds.NELng)
+        var SW = new google.maps.LatLng($scope.form.bounds.SWLat, $scope.form.bounds.SWLng);
+        var NE = new google.maps.LatLng($scope.form.bounds.NELat, $scope.form.bounds.NELng);
         var bounds = new google.maps.LatLngBounds(SW, NE);
-        $scope.options.bounds = bounds
+        $scope.options.bounds = bounds;
 
       }
       if ($scope.form.componentEnabled) {
-        $scope.options.country = $scope.form.country
+        $scope.options.country = $scope.form.country;
       }
     };
+
+    $scope.processForm = function () {
+      $scope.sendForm = true;
+    };
+
+    $scope.$on('mapentrySelected', function(event, data) { 
+      if($scope.sendForm) {
+        $scope.sendForm = false;
+        console.log('Sending form with:');
+      } else {
+        console.log('New place selected:');
+      }
+      console.log(data);
+    });
 
   });
 
