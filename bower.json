@@ -1,7 +1,7 @@
 {
-  "name": "ngMapAutocomplete",
+  "name": "ng-map-autocomplete",
   "version": "1.0.2",
-  "main": "src/ngMapAutocomplete.js",
+  "main": "src/ng-map-autocomplete.js",
   "ignore": [],
   "dependencies": {
     "angular": ">=1.2.0"    
