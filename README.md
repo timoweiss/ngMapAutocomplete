@@ -24,6 +24,11 @@ Will's original examples:
 
 ## Usage
 
+Install via bower
+``` shell
+bower install ng-map-autocomplete
+```
+
 Include the required libraries 
 ```html
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
