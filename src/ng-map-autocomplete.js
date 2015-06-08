@@ -104,6 +104,9 @@ angular.module("ngMapAutocomplete", [])
 
                 if (scope.gPlace === undefined) {
                     scope.gPlace = new google.maps.places.Autocomplete(element[0], {});
+                    if(ngModel) {
+                        getPlace({name: ngModel});
+                    }
                 }
 
                 google.maps.event.addListener(scope.gPlace, 'place_changed', function () {
@@ -153,7 +156,7 @@ angular.module("ngMapAutocomplete", [])
                 });
 
                 //function to get retrieve the autocompletes first result using the AutocompleteService
-                var getPlace = function (result) {
+                function getPlace(result) {
                     var autocompleteService = new google.maps.places.AutocompleteService();
                     if (result.name.length > 0) {
                         autocompleteService.getPlacePredictions(
